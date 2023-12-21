@@ -10,13 +10,27 @@ export default defineUserConfig({
                 link: '/',
             },
             {
-                text: '医学影像基础知识',
+                text: '基础概念',
                 link: '/basic/',
                 children: [
                     {
-                        text: 'hshhsh',
-                        link: '/basic/',
-                    }
+                        text: '医学影像相关知识',
+                        link: '/basic/basic-knowlodge/',
+                    },
+                    {
+                        text: 'Cornerstone 基础概念',
+                        link: '/basic/basic-concept/',
+                        children: [
+                            {
+                                text: 'Enabled Elements',
+                                link: '/basic/basic-concept/enabled-elements/',
+                            },
+                            {
+                                text: 'Image Ids',
+                                link: '/basic/basic-concept/image-ids/',
+                            }
+                        ]
+                    },
                 ]
             },
             {
