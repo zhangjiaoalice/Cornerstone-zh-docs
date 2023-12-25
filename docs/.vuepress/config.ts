@@ -32,6 +32,10 @@ export default defineUserConfig({
                             {
                                 text: 'Image Loaders',
                                 link: '/basic/basic-concept/image-loaders',
+                            },
+                            {
+                                text: 'Viewports',
+                                link: '/basic/basic-concept/viewports',
                             }
                         ]
                     },
