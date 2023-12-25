@@ -40,6 +40,10 @@ export default defineUserConfig({
                             {
                                 text: 'Images',
                                 link: '/basic/basic-concept/images',
+                            },
+                            {
+                                text: 'Pixel Coordinate System',
+                                link: '/basic/basic-concept/pixel-coordinate-system'
                             }
                         ]
                     },
