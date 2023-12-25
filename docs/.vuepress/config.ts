@@ -28,6 +28,10 @@ export default defineUserConfig({
                             {
                                 text: 'Image Ids',
                                 link: '/basic/basic-concept/image-ids/',
+                            },
+                            {
+                                text: 'Image Loaders',
+                                link: '/basic/basic-concept/image-loaders',
                             }
                         ]
                     },
