@@ -36,6 +36,10 @@ export default defineUserConfig({
                             {
                                 text: 'Viewports',
                                 link: '/basic/basic-concept/viewports',
+                            },
+                            {
+                                text: 'Images',
+                                link: '/basic/basic-concept/images',
                             }
                         ]
                     },
