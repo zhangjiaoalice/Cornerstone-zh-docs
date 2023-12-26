@@ -44,6 +44,10 @@ export default defineUserConfig({
                             {
                                 text: 'Pixel Coordinate System',
                                 link: '/basic/basic-concept/pixel-coordinate-system'
+                            },
+                            {
+                                text: 'Rendering Loop',
+                                link: '/basic/basic-concept/rendering-loop'
                             }
                         ]
                     },
