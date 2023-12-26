@@ -48,6 +48,10 @@ export default defineUserConfig({
                             {
                                 text: 'Rendering Loop',
                                 link: '/basic/basic-concept/rendering-loop'
+                            },
+                            {
+                                text: 'Rendering Pipeline',
+                                link: '/basic/basic-concept/rendering-pipeline'
                             }
                         ]
                     },
