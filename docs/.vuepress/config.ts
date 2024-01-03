@@ -58,7 +58,7 @@ export default defineUserConfig({
                 ]
             },
             {
-                text: '医学影像开发库介绍',
+                text: '医学影像平台开发库介绍',
                 link: '/libriry/',
             },
             {
