@@ -98,5 +98,43 @@
     * <font color=green>columns</font>: Number 类型, 表示图像的列，即图像的宽度，图像的列数决定了图像在水平方向的像素数量。在许多情况下，图像的列数和图像的宽度是相同，重复提供这两个变量是为了提供更多的上下文或是为了方便使用。
         * 了解图像的列数对于处理和操作图像数据是非常重要的。例如，在调整图像大小或者进行其他图像处理任务是，需要知道图像的宽度或列数，以便正确地应用变换或算法
         * 图像的宽度和列数可能在不同的场合被强调或者独立指定。在实践中，通常需要开发者根据具体的应用和需求来确定是否需要提供这些额外的信息
-    
-
+    * <font color=green>height</font>: Number 类型， 图像的高度
+    * <font color=green>width</font>: Number 类型，图像的宽度
+    * <font color=green>color</font>: Boolean 类型，用于判断图像的像素数据是 RGB 格式还是, 灰度格式, 为true 是表示是RGB格式，false表示 灰度格式。
+        * RGB 像素格式通常用于显示彩色图像
+        * 灰度格式 只包含亮度信息，没有颜色信息
+    * <font color=green>lut</font>: Object 类型， 用于将像素的RGB值映射到相应的灰度值上，从而提高图像处理的速度和效率
+    * <font color=green>rgba</font>: Boolean 类型， 用于判断图像的像素数据是否以 RGBA 的格式存储
+    * <font color=green>columnPixelSpacing</font>: Number 类型，表示像素之间的水平距离，以mm 为单位
+        * 像素之间的距离决定了图像的分辨率
+    * <font color=green>rowPixelSpacing</font>: Number 类型，表示像素之间的垂直距离，以mm为单位
+    * <font color=green>invert</font>: Boolean 类型， 这个参数表示图像的初始显示方式，特别是对于DICOM格式的图像， 如果出事状态下图像以反转的方式显示则为true，否则为false
+        * 当 DICOM 图像 的 photometric interpretation 被设置为 `MONOCHROME1`(表示图像亮度信息的参数)，那么图像就是以反转的形式显示的，即黑白颠倒
+    * <font color=green>sizeInBytes</font>: Number 类型， 用于存储图像像素所使用的字节数
+    * <font color=green>falseColoe</font>: Boolean 类型，用于标识图像是否已经经过了假色处理
+        * 假色处理是一种图像处理技术，通过将灰度图像或者低色彩图像映射到高色彩图像，使其呈现出生动的颜色效果
+        * 图像经过了假色处理之后，就可能不再是原始的灰度或低彩色图像了，而是经过颜色映射算法的处理后能呈现出生动颜色效果的图像
+        * 如果图像没有经过假色处理，它坑还是原始的灰度或者低彩色图像
+        * 这个参数信息对于了解图像的处理历史和呈现效果非常重要
+    * <font color=green>origPixelData</font>: Array 类型， 经过假色映射后的图像的原始像素数据
+    * <font color=green>stats</font>: ImageStats 类型, 图像最后一次重绘的统计数据
+        * 重绘图像一般是在图像显示时，由于某些原因（如窗口大小调整、图像旋转等）需要重新绘制图像的过程
+        * 重绘统计数据（像素数量、重绘时间、重绘频率）可以帮助我们了解图像重绘的性能和效率，以及是否存在性能瓶颈或优化空间
+    ```javascript
+    interface ImageStats {
+        lastGetPixelDataTime: number;
+        lastStoredPixelDataToCanvasImageDataTime: number;
+        lastPutImageDataTime: number;
+        lastRenderTime: number;
+        lastLutGenerateTime: number;
+    }
+    ```
+    * <font color=green>cachedLut</font>: Object 类型, 图像对象的缓存查找表
+        * 缓存查找表是为了提高图像处理速度而建立的临时数据结构
+        * 在图像处理中，查找表同样用于将像素值映射到相应的颜色或灰度值中， 通过缓存查找表可以避免重复计算和查找，从而提高图像处理的效率
+        * 缓存查找表通常在图像处理的过程中创建，并存储了预先计算好的映射关系。在处理图像是，可以直接使用缓存查找表中的数据，而不需要重新计算映射关系，这样可以大大减少计算时间和加载速度，提高图像处理效率
+        * 缓存查找表是一种临时的数据结构，仅用于加速图像处理过程，并不会永久保存图像数据，处理完成之后，缓存查找表会被释放或者清除，以释放内存空间
+    * <font color=green>colorMap</font>: 已废弃，建议使用 `viewport.colormap` 代替
+    * <font color=green>labelmap</font>: Boolean 类型, 用于标识是否条跳过 modality 和 VOI 查找表(LUT)的管道，只使用颜色查找表
+        * 标签映射通常用于图像处理和计算机视觉任务，其中每个像素区域被分配一个标签或类别。在这种情况下，标签映射通常用图像分割或分类任务，其中每个像素或区域被赋予一个特定的颜色或调色板，以及其所属的类别或组
+        
